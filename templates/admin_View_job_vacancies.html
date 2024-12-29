@@ -1,0 +1,29 @@
+{% include 'admin_header.html' %}
+<center>
+	<u><b><h1>JOB VACANCIES</h1></b></u>
+	<form>
+		<table  class="table" style="width:500px">
+			<tr>
+				<th>Sno:</th>
+				<th>CAREER GUIDANCE TEAM</th>	
+				<th>COMPANY NAME</th>
+				<th>POST</th>
+				<th>VACANCY</th>
+				<th>DATE TIME</th>
+				<th>STATUS</th>
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<th>{{row['team_name']}}</th>
+				<th>{{row['company_name']}}</th>
+				<th>{{row['post']}}</th>
+				<th>{{row['vacancy_count']}}</th>
+				<th>{{row['date_time']}}</th>
+				<th>{{row['status']}}</th>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

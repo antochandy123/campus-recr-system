@@ -1,0 +1,38 @@
+{% include 'student_header.html' %}
+<center>
+	<u><b>
+			<h1>SEMINARS</h1>
+		</b></u>
+	<table class="table" style="width:500px">
+		<tr>
+			<th>Sno:</th>
+			<th>TITLE</th>
+			<th>DESCRIPTION</th>
+			<th>VENUE</th>
+			<th>EVENT DATE</th>
+			<th>SUBMITED DATE</th>
+			<th>STATUS</th>
+		</tr>
+		{% for row in data['view'] %}
+		<tr>
+			<th>{{loop.index}}</th>
+			<th>{{row['title']}}</th>
+			<th>{{row['description']}}</th>
+			<th>{{row['venue']}}</th>
+			<th>{{row['event_date_time']}}</th>
+			<th>{{row['date_time']}}</th>
+			<th>{{row['status']}}</th>
+			<td>{{ row['vstatus'] }}</td>
+			<!-- <td>
+					{% if row['vstatus'] == 'planned' %}
+						<a href="?vacancy_id={{ row['vacancy_id'] }}" class="btn btn-success">Apply</a>
+					{% endif %}
+				</td> -->
+
+			<th><a href="?seminar_id={{ row['seminar_id'] }}" class="btn btn-success">Request</a></th>
+
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+{% include 'footer.html' %}

@@ -1,0 +1,62 @@
+{% include 'student_header.html' %}
+<center>
+	<u><b><h1>Upload Resume</h1></b></u>
+	<form method="post" enctype="multipart/form-data">
+		<table class="table" style="width:500px">
+
+			<tr>
+				<!-- <th>RESUME</th> -->
+				<td><input type="file" name="resume" value="{% if data['updat']%}{{data['updat'][0]['resume']}}{% endif %}" class="form-control"></td>
+			</tr>
+			{% if data['updat']%}
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="update" value="UPDATE" class="btn btn-success" class="form-control"></td>
+			</tr>
+			{% else %}
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" class="btn btn-success"></td>
+			</tr>
+			{% endif %}
+		</table>
+		<u><b><h1></h1></b></u>
+		<table class="table" style="width:500px">
+		
+			<tr>
+				<th>Sno:</th>
+				<th>COMPANY NAME</th>
+				<th>POST</th>
+				<th>VACANCY</th>
+				
+                <th>Out</th>
+                <th>RESUME</th>
+			</tr>
+			{% for row in data['resume'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['company_name']}}</td>
+				<td>{{row['post']}}</td>
+				<td>{{row['vacancy_count']}}</td>
+                <td>
+                {% if row['out']=="INTP"  %}
+                    <h3>The Thinker</h3>
+                {% elif row['out']=="ISTJ"  %}
+                    <h3>The Inspector</h3>
+                {% elif row['out']=="ENFP"  %}
+                    <h3>The Campaigner</h3>
+                {% elif row['out']=="ISFP"  %}
+                    <h3>The Adventurer</h3>
+                {% else %}
+                    <h3>Not Detect</h3>
+                {% endif %}
+
+                </td>
+
+				<td><a href="/{{row['resume']}}">Click here</a></td>
+				<!-- <td><a href="?action=update&resume_id={{row['resume_id']}}" class="btn btn-success">UPDATE</a></td> -->
+			
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

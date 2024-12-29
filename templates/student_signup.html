@@ -1,0 +1,44 @@
+{% include 'header.html' %}
+<center>
+	<u><h1><b>STUDENT REGISTRATION</b></h1></u>
+	<form method="post">
+		<table class="table" style="width:500px">
+			<tr>
+				<th>TEAM NAME</th>
+				<td><input type="text" required name="tname" pattern="[a-zA-Z]{0,20}+$" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>OFFICE PLACE</th>
+				<td><input type="text" required name="place" pattern="[a-zA-Z]{0,20}+$" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>LAND MARK</th>
+				<td><input type="text" required name="landmark" pattern="[a-zA-Z]{0,20}+$" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PINCODE</th>
+				<td><input type="text" required name="pin"  pattern="[0-9]{6}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PHONE</th>
+				<td><input type="text" required name="phone"  pattern="[0-9]{10}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>EMAIL</th>
+				<td><input type="email" required name="email" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>USERNAME</th>
+				<td><input type="text" required name="uname" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PASSWORD</th>
+				<td><input type="password" required name="pwd" class="form-control"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-success"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

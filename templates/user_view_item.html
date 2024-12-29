@@ -1,0 +1,36 @@
+{% include 'user_header.html' %}
+
+<style>
+    
+    h3,th,td{color: aliceblue;}
+    p{color: aliceblue;}
+    table{border: 2px solid grey ;border-collapse: collapse;font-family: Arial, Helvetica, sans-serif;background-color:#0f054c;}
+        td,th{border: 1px solid grey;text-align: center;padding: 10px 20px;font-family: Arial, Helvetica, sans-serif;color: rgb(255, 255, 255);}
+    
+</style>
+<center>
+
+
+    <h3>Items Menu</h3>
+    <form action="" method="post">
+        <table>
+            <tr><th>index</th>
+                <th>item</th>
+                <th>price</th>
+                <th>Rating</th>
+                <th>Book Item</th>
+            </tr>
+            {%for i in data['items']%}
+            <tr><td>{{loop.index}}</td>
+                <td>{{i['item']}}</td>
+                <td>{{i['rate']}}</td>
+                <td>{{i['rated']}}/5</td>
+                <td><a href="user_view_itemBook?itemid={{i['item_id']}}">Book</a></td>
+            </tr>
+            {%endfor%}
+        </table>
+       
+    </form>
+
+</center>
+    {% include 'footer.html' %}

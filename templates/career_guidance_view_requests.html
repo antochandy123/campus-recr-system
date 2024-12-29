@@ -1,0 +1,31 @@
+{% include 'career_guidance_header.html' %}
+<center>
+	<u><b><h1>REQUESTS FROM STUDENTS</h1></b></u>
+	<form>
+		<table class="table" style="width:500px">
+			<tr>
+				<th>SNO</th>
+				<th>STUDENT NAME</th>
+				<th>DATE TIME</th>
+				<th>STATUS</th>
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['first_name']}}.{{row['last_name']}}</td>
+				<td>{{row['date_time']}}</td>
+				<td>{{row['status']}}</td>
+				{% if row['status']=='pending' %}
+				<td><a href="?action=accept&rid={{row['request_id']}}&id={{data['id']}}" class="btn btn-success">ACCEPT</a></td>
+				<td><a href="?action=reject&rid={{row['request_id']}}&id={{data['id']}}" class="btn btn-warning">REJECT</a></td>
+				{% elif row['status']=='accepted' %}
+				<td><a href="?action=reject&rid={{row['request_id']}}&id={{data['id']}}" class="btn btn-warning">REJECT</a></td>
+				{% elif row['status']=='rejected' %}
+				<td><a href="?action=accept&rid={{row['request_id']}}&id={{data['id']}}" class="btn btn-success">ACCEPT</a></td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

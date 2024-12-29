@@ -1,0 +1,44 @@
+{% include 'header.html' %}
+<center>
+	<u><h1><b>CAMPUS RECRUITMENT REGISTRATION</b></h1></u>
+	<form method="post">
+		<table class="table" style="width:500px">
+			<tr>
+				<th>TEAM NAME</th>
+				<td><input type="text" required name="tname" placeholder="Enter Team Name" pattern="[a-zA-Z]{0,20}+$" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>OFFICE PLACE</th>
+				<td><input type="text" required name="place" placeholder="Enter Office Place" pattern="[a-zA-Z]{0,20}+$" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>LAND MARK</th>
+				<td><input type="text" required name="landmark" placeholder="Enter Land Mark" pattern="[a-zA-Z]{0,20}+$" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PINCODE</th>
+				<td><input type="text" required name="pin" placeholder="Enter Pincode" pattern="[0-9]{6}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PHONE</th>
+				<td><input type="text" required name="phone" placeholder="Enter Phone"  pattern="[0-9]{10}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>EMAIL</th>
+				<td><input type="email" required name="email" placeholder="Enter Email" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>USERNAME</th>
+				<td><input type="text" required name="uname" placeholder="Enter Username" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PASSWORD</th>
+				<td><input type="password" required name="pwd" placeholder="Enter Password" class="form-control"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-success"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

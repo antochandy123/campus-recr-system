@@ -1,0 +1,78 @@
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+			<script>alert("{{ message }}")</script>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+ <!--  footer --> 
+      <footr>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-2 col-md-6 col-sm-12 width">
+                     <div class="address">
+                       
+                     </div>
+                  </div>
+                  <div class="col-lg-2 col-md-6 col-sm-12 width">
+                     <div class="address">
+                       
+                     </div>
+                  </div>
+                  <div class="col-lg-2 col-md-6 col-sm-12 width">
+                     <div class="address">
+                       
+                     </div>
+                  </div>
+                  <div class="col-lg-2 col-md-6 col-sm-12 width">
+                     <div class="address">
+                       
+                     </div>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 width">
+                     <div class="address">
+                       
+                       
+                        
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <p> <a href="https://html.design/"></a></p>
+            </div>
+         </div>
+      </footr>
+      <!-- end footer -->
+      <!-- Javascript files--> 
+      <script src="/static/js/jquery.min.js"></script> 
+      <script src="/static/js/popper.min.js"></script> 
+      <script src="/static/js/bootstrap.bundle.min.js"></script> 
+      <script src="/static/js/jquery-3.0.0.min.js"></script> 
+      <script src="/static/js/plugin.js"></script> 
+      <!-- sidebar --> 
+      <script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script> 
+      <script src="/static/js/custom.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+         
+         $(".zoom").hover(function(){
+         
+         $(this).addClass('transition');
+         }, function(){
+         
+         $(this).removeClass('transition');
+         });
+         });
+         
+      </script> 
+   </body>
+</html>
+</body>
+</html>

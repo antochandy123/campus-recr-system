@@ -1,0 +1,40 @@
+{% include 'college_header.html' %}
+<center>
+	<u><b><h1>MANAGE COURSES</h1></b></u>
+	<form method="post">
+		<table class="table" style="width:500px">
+			<tr>
+				<th>COURSE NAME</th>
+				<td><input type="text" placeholder="Enter Course" required name="course" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>DESCRIPTION</th>
+				<td><textarea placeholder="Enter Description" required name="des" class="form-control"></textarea></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" value="add" class="btn btn-success"></td>
+			</tr>
+		</table>
+		<u><b><h1>VIEW COURSES</h1></b></u>
+	<form>
+		<table class="table" style="width:500px">
+			<tr>
+				<th>Sno</th>
+				
+				<th>COURSE NAME</th>
+				<th>DESCRIPTION</th>
+			</tr>
+			{% for row in data['view']%}
+			<tr>
+				<td>{{loop.index}}</td>
+				
+				<td>{{row['course_name']}}</td>
+				<td>{{row['description']}}</td>
+				<td><a href="?action=delete&id={{row['course_id']}}" class="btn btn-danger">DELETE</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+	</form>
+</center>
+{% include 'footer.html' %}

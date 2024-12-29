@@ -1,0 +1,15 @@
+{% include 'student_header.html' %}
+<center>
+	<u><b><h1>CHAT BOX</h1></b></u>
+	<form>
+		<table class="table" style="width:500px">
+			
+			{% for row in data['chat'] %}
+			<tr>
+				<th><a href="stu_chat_box?id={{row['career_guidance_id']}}" class="btn btn-success">{{row['first_name']}}.{{row['last_name']}}</a></th>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

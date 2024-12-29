@@ -1,0 +1,40 @@
+{% include 'student_header.html' %}
+<center>
+<h1 ><b><u>CHAT WITH CAREER GUIDANCE TEAM</u></b></h1>
+<br>
+<br>
+	<form method="post">
+		<table class="table" style="width:500px;background-color:rgb(219, 210, 210)">
+		
+		<tr>
+		<td colspan="2" align="right">
+		<div style="height: 300px; overflow-y:scroll; ;background-color:white">
+		<table width="500px">
+			
+			
+			{%if data['chat']%}
+			{% if data['chat']%}
+			{% for row in data['chat']%}
+			<tr>
+			{%if row['sender_id']==data['id'] and row['sender_type']=='student'%}
+			<td align="right">{{row['message']}}</td>
+			{%else%}
+			<td>{{row['message']}}</td>
+			{% endif %}
+			</tr>
+			{% endfor %}
+			{% endif %}
+			{% endif %}
+			
+		</table>
+		</div>
+		<tr>
+				<th><input type="text" name="message" class="form-control"></th>
+				<td><input type="submit" name="submit" value="SEND" class="btn btn-success"></td>
+			</tr>
+		</td>
+		</tr>
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

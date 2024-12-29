@@ -1,0 +1,64 @@
+{% include 'career_guidance_header.html' %}
+<center>
+	<u><b><h1>JOB APPLICATIONS</h1></b></u>
+		<form>
+			<table class="table" style="width:500px">
+			{% if data['student'] %}
+				<tr>
+					<th>FIRST NAME</th>
+					<td>{{ data['student'][0]['first_name']}}</td>
+				</tr>
+				<tr>
+					<th>LAST NAME</th>
+					<td>{{ data['student'][0]['last_name']}}</td>
+				</tr>
+				<tr>
+					<th>HOUSE NAME</th>
+					<td>{{ data['student'][0]['house_name']}}</td>
+				</tr>
+				<tr>
+					<th>PLACE</th>
+					<td>{{ data['student'][0]['place']}}</td>
+				</tr>
+				<tr>
+					<th>PIN CODE</th>
+					<td>{{ data['student'][0]['pincode']}}</td>
+				</tr>
+				<tr>
+					<th>COURSE</th>
+					<td>{{ data['student'][0]['course_name']}}</td>
+				</tr>
+				<tr>
+					<th>PHONE</th>
+					<td>{{ data['student'][0]['phone']}}</td>
+				</tr>
+				<tr>
+					<th>EMAIL</th>
+					<td>{{ data['student'][0]['email']}}</td>
+				</tr>
+			{% else %}
+				<tr>
+					<th>Sno:</th>
+					<th>STUDENT NAME</th>
+					<th>COMPANY NAME</th>
+					<th>POST</th>
+					<th>VANCY</th>
+					<th>DATE TIME</th>
+				</tr>
+				{% for row in data['view'] %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{row['first_name']}}.{{row['last_name']}}</td>
+					<td>{{row['company_name']}}</td>
+					<td>{{row['post']}}</td>
+					<td>{{row['vacancy_count']}}</td>
+					<td>{{row['job_date_time']}}</td>
+					<td><a href="?action=student&id={{row['student_id']}}" class="btn btn-warning">MORE DETAILS</a></td>
+				</tr>
+
+				{% endfor %}
+			{% endif %}
+			</table>
+		</form>
+</center>
+{% include 'footer.html' %}

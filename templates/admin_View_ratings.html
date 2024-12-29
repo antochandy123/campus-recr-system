@@ -1,0 +1,25 @@
+{% include 'admin_header.html' %}
+<center>
+	<u><b><h1>RATINGS</h1></b></u>
+	<table  class="table" style="width:500px">
+		<tr>
+			<th>SNO:</th>
+			<th>STUDENT NAME</th>
+			<th>CAREER GUIDANCE TEAM</th>
+			<th>RATE</th>
+			<th>REVIEW</th>
+			<th>DATE TIME</th>
+		</tr>
+		{% for row in data['view'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['first_name']}}.{{row['last_name']}}</td>
+			<td>{{row['team_name']}}</td>
+			<td>{{row['rate']}}</td>
+			<td>{{row['review']}}</td>
+			<td>{{row['date_time']}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+{% include 'footer.html' %}

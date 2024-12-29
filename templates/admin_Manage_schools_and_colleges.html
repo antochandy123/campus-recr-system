@@ -1,0 +1,87 @@
+{% include 'admin_header.html' %}
+<center>
+	<u><b><h1>MANAGE INSTITUTES</h1></b></u>
+	<form method="post">
+		<table class="table" style="width:500px">
+			<tr>
+				<th>NAME</th>
+				<td><input type="text" required  placeholder="Enter name" name="name" pattern="[a-zA-Z]{0,20}+$" value="{% if data['updates'] %}{{data['updates'][0]['name']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>TYPE</th>
+				{% if data['updates']%}
+					{% if data['updates'][0]['type']=='college'%}
+					<td class="form-control"><input type="radio" name="type" value="school" >SCHOOL
+					<input type="radio" checked  name="type" value="college">COLLEGE</td>
+					{% else %}
+					<td><input type="radio" checked name="type" value="school">SCHOOL
+					<input type="radio"   name="type" value="college">COLLEGE</td>
+					{% endif %}
+				{% else %}
+				<td class="form-control"><input type="radio" checked name="type" value="school">SCHOOL
+				<input type="radio"   name="type" value="college">COLLEGE</td>
+				{% endif %}
+			</tr>
+			<tr>
+				<th>PLACE</th>
+				<td><input type="text" placeholder="Enter Place" required  name="place" pattern="[a-zA-Z]{0,20}" value="{% if data['updates'] %}{{data['updates'][0]['place']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PINCODE</th>
+				<td><input type="text" required  placeholder="Enter Pincode" name="pin" pattern="[0-9]{6}" value="{% if data['updates'] %}{{data['updates'][0]['pincode']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PHONE</th>
+				<td><input type="text" required placeholder="Enter Phone" name="phone" pattern="[0-9]{10}" value="{% if data['updates'] %}{{data['updates'][0]['phone']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>EMAIL</th>
+				<td><input type="email" required placeholder="Enter Email" name="email" value="{% if data['updates'] %}{{data['updates'][0]['email']}}{% endif %}" class="form-control"></td>
+			</tr>
+			{% if data['updates'] %}
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="updatess" value="UPDATE" class="btn btn-success"></td>
+			</tr>
+			{% else %}
+			<tr>
+				<th>USER NAME</th>
+				<td><input type="text" required name="uname" placeholder="Enter Username" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PASSWORD</th>
+				<td><input type="password" required  name="pwd" placeholder="Enter Password" class="form-control"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" name="REGISTER" class="btn btn-success"></td>
+			</tr>
+			{% endif %}
+		</table>
+		<br>
+		<u><b><h1>REGISTERED INSTITUTIONS</h1></b></u>
+		<table class="table" style="width:500px">
+			<tr>
+				<th>Sno:</th>
+				<th>NAME</th>
+				<th>TYPE</th>
+				<th>PLACE</th>
+				<th>PINCODE</th>
+				<th>PHONE</th>
+				<th>EMAIL</th>
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['name']}}</td>
+				<td>{{row['type']}}</td>
+				<td>{{row['place']}}</td>
+				<td>{{row['pincode']}}</td>
+				<td>{{row['phone']}}</td>
+				<td>{{row['email']}}</td>
+				<td><a href="?action=delete&id={{row['login_id']}}" class="btn btn-danger">DELETE</a></td>
+				<td><a href="?action=update&id={{row['login_id']}}" class="btn btn-warning">UPDATE</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

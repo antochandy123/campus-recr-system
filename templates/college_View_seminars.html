@@ -1,0 +1,29 @@
+{% include 'college_header.html' %}
+<center>
+	<u><b><h1>PLANED SEMINARS</h1></b></u>
+		<table class="table" style="width:500px">
+			<tr>
+				<th>Sno:</th>
+				<th>TITLE</th>
+				<th>DESCRIPTION</th>
+				<th>VENUE</th>
+				<th>EVENT DATE</th>
+				<th>SUBMITED DATE</th>
+				<th>STATUS</th>
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<th>{{loop.index}}</th>
+				<th>{{row['title']}}</th>
+				<th>{{row['description']}}</th>
+				<th>{{row['venue']}}</th>
+				<th>{{row['event_date_time']}}</th>
+				<th>{{row['date_time']}}</th>
+				<th>{{row['status']}}</th>
+				
+				
+			</tr>
+			{% endfor %}
+		</table>
+</center>
+{% include 'footer.html' %}

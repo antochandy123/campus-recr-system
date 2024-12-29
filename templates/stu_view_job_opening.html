@@ -1,0 +1,62 @@
+{% include 'student_header.html' %}
+<center>
+    <u><b>
+            <h1>JOB VACANCIES</h1>
+        </b></u>
+    <table class="table" style="width:500px">
+        <tr>
+            <th>Sno:</th>
+            <th>CAREER GUIDANCE TEAM</th>
+            <th>COMPANY NAME</th>
+            <th>POST</th>
+            <th>VACANCY</th>
+            <th>DATE TIME</th>
+            <!-- <th>STATUS</th> -->
+            <th>Action</th>
+        </tr>
+        {% for row in data['view'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ row['team_name'] }}</td>
+            <td>{{ row['company_name'] }}</td>
+            <td>{{ row['post'] }}</td>
+            <td>{{ row['vacancy_count'] }}</td>
+            <td>{{ row['date_time'] }}</td>
+            <!-- <td>{{ row['vstatus'] }}</td> -->
+            <!-- <td>
+                {% if row['vstatus'] == 'active' %}
+                    <a href="?vacancy_id={{ row['vacancy_id'] }}" class="btn btn-success">Apply</a>
+                {% endif %}
+            </td> -->
+
+            <td><a href="student_upload_resume?vacancy_id={{ row['vacancy_id'] }}" class="btn btn-success">Apply</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</center>
+{% include 'footer.html' %}
+
+<script>
+    function applyJob(vacancyId) {
+        fetch('/apply_job', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ vacancy_id: vacancyId })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert(data.message);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+    }
+</script>

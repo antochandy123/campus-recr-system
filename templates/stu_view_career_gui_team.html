@@ -1,0 +1,33 @@
+{% include 'student_header.html' %}
+<center>
+	<u><b><h1>CAREER GUIDANCE TEAMS</h1></b></u>
+	<form>
+		<table class="table" style="width:500px">
+			<tr>
+				<th>Sno:</th>
+				<th>TEAM NAME</th>
+				<th>OFFICE PLACE</th>
+				<th>LAND MARK</th>
+				<th>PINCODE</th>
+				<th>PHONE</th>
+				<th>EMAIL</th>
+				
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['team_name']}}</td>
+				<td>{{row['office_place']}}</td>
+				<td>{{row['land_mark']}}</td>
+				<td>{{row['pincode']}}</td>
+				<td>{{row['phone']}}</td>
+				<td>{{row['email']}}</td>
+				<td class="btn btn-success"><a href="stu_chat_box?career_guidance_id={{row['career_guidance_id']}}">CHAT</a></td><br>
+				<td class="btn btn-success"><a href="stu_rating?career_guidance_id={{row['career_guidance_id']}}">RATE</a></td>
+		
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

@@ -1,0 +1,56 @@
+{% include 'career_guidance_header.html' %}
+<center>
+	<u><b><h1>JOB OPENINGS</h1></b></u>
+	<form method="post">
+		<table class="table" style="width:500px">
+			<tr>
+				<th>COMPANY NAME</th>
+				<td><input type="text" placeholder="Enter Company Name" name="comapny" value="{% if data['updat']%}{{data['updat'][0]['company_name']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>POST</th>
+				<td><input type="text" placeholder="Enter Post" name="post" value="{% if data['updat']%}{{data['updat'][0]['post']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>VACANCY</th>
+				<td><input type="text" placeholder="Enter Vacancy" name="vacancy" value="{% if data['updat']%}{{data['updat'][0]['vacancy_count']}}{% endif %}" class="form-control"></td>
+			</tr>
+			{% if data['updat']%}
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="update" value="UPDATE" class="btn btn-success" class="form-control"></td>
+			</tr>
+			{% else %}
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" class="btn btn-success"></td>
+			</tr>
+			{% endif %}
+		</table>
+		<u><b><h1>REGISTERED OPENINGS</h1></b></u>
+		<table class="table" style="width:500px">
+		
+			<tr>
+				<th>Sno:</th>
+				<th>COMPANY NAME</th>
+				<th>POST</th>
+				<th>VACANCY</th>
+				<th>STATUS</th>
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['company_name']}}</td>
+				<td>{{row['post']}}</td>
+				<td>{{row['vacancy_count']}}</td>
+				<td>{{row['status']}}</td>
+				<td><a href="?action=update&id={{row['vacancy_id']}}" class="btn btn-success">UPDATE</a></td>
+				{% if row['status']=='active'%}
+				<td><a href="?action=closed&id={{row['vacancy_id']}}" class="btn btn-warning">CLOSE</a></td>
+				{% else %}
+				<td><a href="?action=active&id={{row['vacancy_id']}}" class="btn btn-warning">ACTIVATE</a></td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

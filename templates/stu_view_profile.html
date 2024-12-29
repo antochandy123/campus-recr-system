@@ -1,0 +1,33 @@
+{% include 'student_header.html' %}
+<center>
+	<u><b><h1>MY PROFILE</h1></b></u>
+	<form>
+		<table  class="table" style="width:500px">
+			<tr>
+				<!-- <th>SNO</th> -->
+				<th>FIRST NAME</th>
+				<th>LAST NAME</th>
+				<th>HOUSE NAME</th>
+				<th>PLACE</th>
+				<th>PIN CODE</th>
+				<th>COURSE</th>
+				<th>PHONE</th>
+				<th>EMAIL</th>
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<!-- <td>{{loop.index}}</td> -->
+				<td>{{row['first_name']}}</td>
+				<td>{{row['last_name']}}</td>
+				<td>{{row['house_name']}}</td>
+				<td>{{row['place']}}</td>
+				<td>{{row['pincode']}}</td>
+				<td>{{row['course_name']}}</td>
+				<td>{{row['phone']}}</td>
+				<td>{{row['email']}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

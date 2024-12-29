@@ -1,0 +1,97 @@
+{% include 'college_header.html' %}
+<center>
+	<u><b><h1>STUDENTS REGISTRATION</h1></b></u>
+	<form method="post">
+		<table class="table" style="width:500px">
+			<tr>
+				<th>FIRST NAME</th>
+				<td><input type="text" placeholder="Enter First Name" required name="fname" pattern="[a-zA-Z]{0,20}" value="{% if data['updatess']%}{{data['updatess'][0]['first_name']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>LAST NAME</th>
+				<td><input type="text" required name="lname" placeholder="Enter Last Name" pattern="[a-zA-Z]{0,20}" value="{% if data['updatess']%}{{data['updatess'][0]['last_name']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>HOUSE NAME</th>
+				<td><input type="text" required name="hname" placeholder="Enter House Name"  pattern="[a-zA-Z]{0,20}" value="{% if data['updatess']%}{{data['updatess'][0]['house_name']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PLACE</th>
+				<td><input type="text" required name="place" placeholder="Enter Place"  pattern="[a-zA-Z]{0,20}" value="{% if data['updatess']%}{{data['updatess'][0]['place']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PINCODE</th>
+				<td><input type="text" required name="pin"  placeholder="Enter Pincode" pattern="[0-9]{6}" value="{% if data['updatess']%}{{data['updatess'][0]['pincode']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>COURSE</th>
+				<td><select required hidden name="course" >
+				{% if data['course_up']%}
+					{% for i in data['course_up'] %}
+					<option value="{{i['course_id']}}">{{i['course_name']}}</option>
+					{% endfor %}
+				{% else %}
+					{% for row in data['course'] %}
+					<option value="{{row['course_id']}}">{{row['course_name']}}</option>
+					{% endfor %}
+				{% endif %}
+				</select></td>
+			</tr>
+			<tr>
+				<th>PHONE NO</th>
+				<td><input type="text" required name="phone" placeholder="Enter Phone"  pattern="[0-9]{10}" value="{% if data['updatess']%}{{data['updatess'][0]['phone']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>EMAIL</th>
+				<td><input type="email" required name="email" placeholder="Enter Email" value="{% if data['updatess']%}{{data['updatess'][0]['email']}}{% endif %}" class="form-control"></td>
+			</tr>
+			{% if data['updatess']%}
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="updat" value="UPDATE" class="btn btn-success"></td>
+			</tr>
+			{% else %}
+			<tr>
+				<th>USERNAME</th>
+				<td><input type="text" required name="uname" placeholder="Enter Username" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>PASSWORD</th>
+				<td><input type="password" required name="pwd" placeholder="Enter Password" class="form-control"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-success"></td>
+			</tr>
+			{% endif %}
+		</table>
+		<u><b><h1>REGISTERED STUDENTS</h1></b></u>
+		<table class="table" style="width:500px">
+			<tr>
+				<th>SNO:</th>
+				<th>FIRST NAME</th>
+				<th>LAST NAME</th>
+				<th>HOUSE NAME</th>
+				<th>PLACE</th>
+				<th>PINCODE</th>
+				<th>COURSE</th>
+				<th>PHONE NO</th>
+				<th>EMAIL</th>
+			</tr>
+			{% for row in data['students']%}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['first_name']}}</td>
+				<td>{{row['last_name']}}</td>
+				<td>{{row['house_name']}}</td>
+				<td>{{row['place']}}</td>
+				<td>{{row['pincode']}}</td>
+				<td>{{row['course_name']}}</td>
+				<td>{{row['phone']}}</td>
+				<td>{{row['email']}}</td>
+				<td><a href="?action=delete&id={{row['login_id']}}" class="btn btn-danger">DELETE</a></td>
+				<td><a href="?action=update&id={{row['login_id']}}" class="btn btn-warning">UPDATE</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

@@ -1,0 +1,39 @@
+{% include 'admin_header.html' %}
+<center>
+	<u><b><h1>REGISTERED CAREER GUIDANCE TEAMS</h1></b></u>
+	<form>
+		<table class="table" style="width:500px">
+			<tr>
+				<th>Sno:</th>
+				<th>TEAM NAME</th>
+				<th>OFFICE PLACE</th>
+				<th>LAND MARK</th>
+				<th>PINCODE</th>
+				<th>PHONE</th>
+				<th>EMAIL</th>
+				<th>STATUS</th>
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['team_name']}}</td>
+				<td>{{row['office_place']}}</td>
+				<td>{{row['land_mark']}}</td>
+				<td>{{row['pincode']}}</td>
+				<td>{{row['phone']}}</td>
+				<td>{{row['email']}}</td>
+				<td>{{row['status']}}</td>
+				{% if row['status']=='pending' %}
+				<td><a href="?action=accept&id={{row['login_id']}}" class="btn btn-success">ACCEPT</a></td>
+				<td><a href="?action=reject&id={{row['login_id']}}" class="btn btn-danger">REJECT</a></td>
+				{% elif row['status']=='accepted' %}
+				<td><a href="?action=reject&id={{row['login_id']}}" class="btn btn-danger">REJECT</a></td>
+				{% elif row['status']=='rejected' %}
+				<td><a href="?action=accept&id={{row['login_id']}}" class="btn btn-success">ACCEPT</a></td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

@@ -1,0 +1,61 @@
+{% include 'career_guidance_header.html' %}
+<center>
+	<u><b><h1>SEMINARS</h1></b></u>
+	<form method="post">
+		<table class="table" style="width:500px">
+		
+			<tr>
+				<th>TITLE</th>
+				<td><input type="text" placeholder="Enter Title" required name="title" value="{% if data['updatez'] %}{{data['updatez'][0]['title']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>DESCRIPTION</th>
+				<td><input type="text" placeholder="Enter Description" required name="description" value="{% if data['updatez'] %}{{data['updatez'][0]['description']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>VENUE</th>
+				<td><input type="text" required placeholder="Enter Venue" name="venue" value="{% if data['updatez'] %}{{data['updatez'][0]['venue']}}{% endif %}" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>EVENT DATE</th>
+				<td><input type="datetime-local" required name="event" value="{% if data['updatez'] %}{{data['updatez'][0]['event_date_time']}}{% endif %}" class="form-control"></td>
+			</tr>
+			{% if data['updatez'] %}
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="updates" value="UPDATE" class="btn btn-success"></td>
+			</tr>
+			{% else %}
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="submit" value="ADD" class="btn btn-success"></td>
+			</tr>
+		{% endif %}
+		</table>
+		<u><b><h1>PLANED SEMINARS</h1></b></u>
+		<table class="table" style="width:500px">
+			<tr>
+				<th>Sno:</th>
+				<th>TITLE</th>
+				<th>DESCRIPTION</th>
+				<th>VENUE</th>
+				<th>EVENT DATE</th>
+				<th>SUBMITED DATE</th>
+				<th>STATUS</th>
+			</tr>
+			{% for row in data['view'] %}
+			<tr>
+				<th>{{loop.index}}</th>
+				<th>{{row['title']}}</th>
+				<th>{{row['description']}}</th>
+				<th>{{row['venue']}}</th>
+				<th>{{row['event_date_time']}}</th>
+				<th>{{row['date_time']}}</th>
+				<th>{{row['status']}}</th>
+				<th><a href="?action=update&id={{row['seminar_id']}}" class="btn btn-warning">UPDATE</a></th>
+				<th><a href="?action=cancel&id={{row['seminar_id']}}" class="btn btn-danger">CANCEL</a></th>
+				<th><a href="career_guidance_view_requests?id={{row['seminar_id']}}" class="btn btn-success">REQUESTS FROM STUDENTS</a></th>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}

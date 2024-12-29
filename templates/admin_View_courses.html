@@ -1,0 +1,23 @@
+{% include 'admin_header.html' %}
+<center>
+	<u><b><h1>VIEW COURSES</h1></b></u>
+	<form>
+		<table  class="table" style="width:500px">
+			<tr>
+				<th>Sno</th>
+				<th>INSTITUTE NAME</th>
+				<th>COURSE NAME</th>
+				<th>DESCRIPTION</th>
+			</tr>
+			{% for row in data['view']%}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['name']}}</td>
+				<td>{{row['course_name']}}</td>
+				<td>{{row['description']}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}
